@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queima Total Loja RV - Página Inicial</title>
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: top 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ff6600;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ff6600;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            display: none; /* Oculta o menu por padrão */
+            background-color: #000;
+            position: absolute;
+            top: 50px;
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav ul.active {
+            display: flex; /* Mostra o menu quando ativo */
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            color: #ff6600;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            color: #ff6600;
+            margin-left: 20px;
+        }
+
+        /* Carrossel de Destaques */
+        .carrossel {
+            margin-top: 110px; /* Adicionando espaço para o cabeçalho fixo e o menu */
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .carrossel img {
+            max-width: 100%;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+
+        /* Seções de Produtos */
+        main {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        h2 {
+            width: 100%;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .produto {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            background-color: #fff;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .produto:hover {
+            transform: scale(1.05);
+        }
+
+        .produto img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .produto h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .produto p {
+            font-size: 16px;
+            color: #ff6600;
+        }
+
+        button {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .produto {
+                width: 45%;
+            }
+
+            header h1 {
+                font-size: 18px;
+            }
+
+            .menu-toggle {
+                display: block;
+                background-color: #ff6600;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 5px;
+                margin: 10px 0;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            nav ul li a {
+                padding: 10px 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .produto {
+                width: 100%;
+            }
+
+            header h1 {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+        <h1>Queima Total Loja RV 🔥</h1>
+        <a href="carrinho/carrinho.html"><i class="fas fa-shopping-cart cart-icon"></i></a>
+    </header>
+
+    <!-- Carrossel de Destaques -->
+    <div class="carrossel">
+        <img src="imagens/destaques/FONE_JBL_TUNE_510BT.jpg" alt="Produto Destaque 1">
+        <img src="imagens/destaques/Cabo_H'maston_Tipo_C_Para_Tipo_C_5v-3a_1m_Branco_H88-4.jpg" alt="Produto Destaque 2">
+        <img src="imagens/destaques/FONE_AIRPODS_MAX_AZUL.jpg" alt="Produto Destaque 3">
+        <img src="imagens/destaques/MASSAGEADOR_MUSCULAR.jpg" alt="Produto Destaque 4">
+        <img src="imagens/destaques/ROTEADOR.jpg" alt="Produto Destaque 5">
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="categorias/smartwatches.html">Smartwatches</a></li>
+            <li><a href="categorias/fones.html">Fones de Ouvido</a></li>
+            <li><a href="categorias/acessorios.html">Acessórios</a></li>
+            <li><a href="categorias/gadgets.html">Gadgets</a></li>
+            <li><a href="categorias/outros.html">Outros Acessórios</a></li>
+            <li><a href="carrinho/carrinho.html">Carrinho</a></li>
+        </ul>
+    </nav>
+
+    <main id="produtos">
+        <!-- Destaque: Smartwatches -->
+        <section id="smartwatches">
+            <h2><a href="categorias/smartwatches.html">Smartwatches</a></h2>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_U9_ULTRA_LARANJA.jpg" alt="Smartwatch U9 Ultra Laranja">
+                <h3>Smartwatch U9 Ultra Laranja</h3>
+                <p>197,00</p>
+                <button onclick="adicionarAoCarrinho('Smartwatch U9 Ultra Laranja', 197)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_W29S_PRO.jpg" alt="Smartwatch W29S Pro">
+                <h3>Smartwatch W29S Pro</h3>
+                <p>197,00</p>
+                <button onclick="adicionarAoCarrinho('Smartwatch W29S Pro', 197)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_W69_ULTRA_MINI.jpg" alt="Smartwatch W69 Ultra Mini">
+                <h3>Smartwatch W69 Ultra Mini</h3>
+                <p>269,00</p>
+                <button onclick="adicionarAoCarrinho('Smartwatch W69 Ultra Mini', 269)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_W69_ULTRA_PLUS.jpg" alt="Smartwatch W69 Ultra Plus">
+                <h3>Smartwatch W69 Ultra Plus</h3>
+                <p>269,00</p>
+                <button onclick="adicionarAoCarrinho('Smartwatch W69 Ultra Plus', 269)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_ULTRA_3_MINI.jpg" alt="Smartwatch Ultra 3 Mini">
+                <h3>Smartwatch Ultra 3 Mini</h3>
+                <p>279,00</p>
+                <button onclick="adicionarAoCarrinho('Smartwatch Ultra 3 Mini', 279)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+        <!-- Destaque: Fones de Ouvido -->
+        <section id="fones">
+            <h2><a href="categorias/fones.html">Fones de Ouvido</a></h2>
+            <div class="produto">
+                <img src="imagens/FONE_HMASTON_RS66.jpg" alt="Fone HMASTON RS66">
+                <h3>Fone HMASTON RS66</h3>
+                <p>75,00</p>
+                <button onclick="adicionarAoCarrinho('Fone HMASTON RS66', 75)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/FONE_JBL_TUNE_510BT.jpg" alt="Fone JBL TUNE 510BT">
+                <h3>Fone JBL TUNE 510BT</h3>
+                <p>69,00</p>
+                <button onclick="adicionarAoCarrinho('Fone JBL TUNE 510BT', 69)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/FONE_PATINHA_HELLO_BEAR_BK5.jpg" alt="Fone Patinha Hello Bear BK5">
+                <h3>Fone Patinha Hello Bear BK5</h3>
+                <p>69,00</p>
+                <button onclick="adicionarAoCarrinho('Fone Patinha Hello Bear BK5', 69)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/FONE_AIRPODS_MAX_AZUL.jpg" alt="Fone AirPods Max Azul">
+                <h3>Fone AirPods Max Azul</h3>
+                <p>129,00</p>
+                <button onclick="adicionarAoCarrinho('Fone AirPods Max Azul', 129)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/FONE_JBL_JB860.jpg" alt="Fone JBL JB860">
+                <h3>Fone JBL JB860</h3>
+                <p>89,00</p>
+                <button onclick="adicionarAoCarrinho('Fone JBL JB860', 89)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+        <!-- Destaque: Acessórios para Smartphones -->
+        <section id="acessorios">
+            <h2><a href="categorias/acessorios.html">Acessórios para Smartphones</a></h2>
+            <div class="produto">
+                <img src="imagens/PELICULA_PARA_IPHONE.jpg" alt="Película para iPhone">
+                <h3>Película para iPhone</h3>
+                <p>10,00</p>
+                <button onclick="adicionarAoCarrinho('Película para iPhone', 10)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/ADAPTADOR_BLUETOOTH_P2.jpg" alt="Adaptador Bluetooth P2">
+                <h3>Adaptador Bluetooth P2</h3>
+                <p>10,00</p>
+                <button onclick="adicionarAoCarrinho('Adaptador Bluetooth P2', 10)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/CABO_USB_TIPO_C.jpg" alt="Cabo USB Tipo C Rápido">
+                <h3>Cabo USB Tipo C Rápido</h3>
+                <p>25,00</p>
+                <button onclick="adicionarAoCarrinho('Cabo USB Tipo C Rápido', 25)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/CABO_TURBO_IPHONE.jpg" alt="Cabo Turbo 4.0 iPhone">
+                <h3>Cabo Turbo 4.0 iPhone</h3>
+                <p>25,00</p>
+                <button onclick="adicionarAoCarrinho('Cabo Turbo 4.0 iPhone', 25)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/CABO_TURBO_V8.jpg" alt="Cabo Turbo V8 2 Metros">
+                <h3>Cabo Turbo V8 2 Metros</h3>
+                <p>20,00</p>
+                <button onclick="adicionarAoCarrinho('Cabo Turbo V8 2 Metros', 20)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+        <!-- Destaque: Periféricos e Gadgets -->
+        <section id="gadgets">
+            <h2><a href="categorias/gadgets.html">Periféricos e Gadgets</a></h2>
+            <div class="produto">
+                <img src="imagens/ROTEADOR_PIX_LINK.jpg" alt="Roteador PIX LINK">
+                <h3>Roteador PIX LINK</h3>
+                <p>79,00</p>
+                <button onclick="adicionarAoCarrinho('Roteador PIX LINK', 79)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/MASSAGEADOR_MUSCULAR.jpg" alt="Massageador Muscular">
+                <h3>Massageador Muscular</h3>
+                <p>99,00</p>
+                <button onclick="adicionarAoCarrinho('Massageador Muscular', 99)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/TECLADO_MOUSE_KETCHUP.jpg" alt="Teclado e Mouse Ketchup KT-2015">
+                <h3>Teclado e Mouse Ketchup KT-2015</h3>
+                <p>89,00</p>
+                <button onclick="adicionarAoCarrinho('Teclado e Mouse Ketchup KT-2015', 89)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SUPORTE_ARTICULADO_TV.jpg" alt="Suporte Articulado para TV 14-55">
+                <h3>Suporte Articulado para TV 14-55</h3>
+                <p>69,00</p>
+                <button onclick="adicionarAoCarrinho('Suporte Articulado para TV 14-55', 69)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/CAMERA_LAMPADA_WIFI.jpg" alt="Câmera Lâmpada Wi-Fi">
+                <h3>Câmera Lâmpada Wi-Fi</h3>
+                <p>69,00</p>
+                <button onclick="adicionarAoCarrinho('Câmera Lâmpada Wi-Fi', 69)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+        <!-- Destaque: Outros Acessórios -->
+        <section id="outros">
+            <h2><a href="categorias/outros.html">Outros Acessórios</a></h2>
+            <div class="produto">
+                <img src="imagens/LAPELA_P2.jpg" alt="Lapela P2">
+                <h3>Lapela P2</h3>
+                <p>15,00</p>
+                <button onclick="adicionarAoCarrinho('Lapela P2', 15)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/BALANCA_PRECISAO_POCKET.jpg" alt="Balança de Precisão Pocket">
+                <h3>Balança de Precisão Pocket</h3>
+                <p>30,00</p>
+                <button onclick="adicionarAoCarrinho('Balança de Precisão Pocket', 30)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/ADAPTADOR_WIRELESS.jpg" alt="Adaptador Wireless Ketchup">
+                <h3>Adaptador Wireless Ketchup</h3>
+                <p>25,00</p>
+                <button onclick="adicionarAoCarrinho('Adaptador Wireless Ketchup', 25)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/POCHETE_CORRIDA.jpg" alt="Pochete de Corrida">
+                <h3>Pochete de Corrida</h3>
+                <p>35,00</p>
+                <button onclick="adicionarAoCarrinho('Pochete de Corrida', 35)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SUPORTE_RETROVISOR_CARRO.jpg" alt="Suporte de Espelho Retrovisor de Carro">
+                <h3>Suporte de Espelho Retrovisor de Carro</h3>
+                <p>20,00</p>
+                <button onclick="adicionarAoCarrinho('Suporte de Espelho Retrovisor de Carro', 20)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Queima Total Loja RV - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Função para mostrar/ocultar o menu
+        function toggleMenu() {
+            const menu = document.querySelector('nav ul');
+            menu.classList.toggle('active');
+        }
+
+        // Função para adicionar produto ao carrinho
+        function adicionarAoCarrinho(nomeProduto, precoProduto) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const produtoExistente = carrinho.find(item => item.nome === nomeProduto);
+
+            if (produtoExistente) {
+                produtoExistente.quantidade += 1;
+            } else {
+                carrinho.push({ nome: nomeProduto, preco: precoProduto, quantidade: 1 });
+            }
+
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            alert(`${nomeProduto} foi adicionado ao carrinho!`);
+        }
+
+        // Menu fixo ao rolar
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", function() {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop) {
+                document.querySelector("header").style.top = "-50px"; // Esconde o cabeçalho
+                document.querySelector("nav").style.top = "-50px"; // Esconde o menu
+            } else {
+                document.querySelector("header").style.top = "0"; // Mostra o cabeçalho
+                document.querySelector("nav").style.top = "50px"; // Mostra o menu
+            }
+            lastScrollTop = st <= 0 ? 0 : st; // Evita bugs de rolagem negativa no iOS
+        }, false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queima Total Loja RV - Página Inicial</title>
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ff6600;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0 0 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            color: #ff6600;
+        }
+
+        /* Carrossel de Destaques */
+        .carrossel {
+            margin-top: 70px; /* Adicionando espaço para o cabeçalho fixo */
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .carrossel img {
+            max-width: 100%;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+
+        /* Seções de Produtos */
+        main {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        h2 {
+            width: 100%;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .produto {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            background-color: #fff;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .produto:hover {
+            transform: scale(1.05);
+        }
+
+        .produto img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .produto h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .produto p {
+            font-size: 16px;
+            color: #ff6600;
+        }
+
+        button {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .produto {
+                width: 45%;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .produto {
+                width: 100%;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Queima Total Loja RV 🔥</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="categorias/smartwatches.html">Smartwatches</a></li>
+                    <li><a href="categorias/fones.html">Fones de Ouvido</a></li>
+                    <li><a href="categorias/acessorios.html">Acessórios</a></li>
+                    <li><a href="categorias/gadgets.html">Gadgets</a></li>
+                    <li><a href="categorias/outros.html">Outros Acessórios</a></li>
+                    <li><a href="carrinho/carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Carrossel de Destaques -->
+    <div class="carrossel">
+        <img src="imagens/destaque1.jpg" alt="Produto Destaque 1">
+        <img src="imagens/destaque2.jpg" alt="Produto Destaque 2">
+        <img src="imagens/destaque3.jpg" alt="Produto Destaque 3">
+    </div>
+
+    <main id="produtos">
+        <!-- Destaque: Smartwatches -->
+        <section id="smartwatches">
+            <h2><a href="categorias/smartwatches.html">Smartwatches</a></h2>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_U9_ULTRA_LARANJA.jpg" alt="Smartwatch U9 Ultra Laranja">
+                <h3>Smartwatch U9 Ultra Laranja</h3>
+                <p>197,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_W29S_PRO.jpg" alt="Smartwatch W29S Pro">
+                <h3>Smartwatch W29S Pro</h3>
+                <p>197,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_W69_ULTRA_MINI.jpg" alt="Smartwatch W69 Ultra Mini">
+                <h3>Smartwatch W69 Ultra Mini</h3>
+                <p>269,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_W69_ULTRA_PLUS.jpg" alt="Smartwatch W69 Ultra Plus">
+                <h3>Smartwatch W69 Ultra Plus</h3>
+                <p>269,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/SMARTWATCH_ULTRA_3_MINI.jpg" alt="Smartwatch Ultra 3 Mini">
+                <h3>Smartwatch Ultra 3 Mini</h3>
+                <p>279,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+        <!-- Destaque: Fones de Ouvido -->
+        <section id="fones">
+            <h2><a href="categorias/fones.html">Fones de Ouvido</a></h2>
+            <div class="produto">
+                <img src="imagens/FONE_HMASTON_RS66.jpg" alt="Fone HMASTON RS66">
+                <h3>Fone HMASTON RS66</h3>
+                <p>75,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/FONE_JBL_TUNE_510BT.jpg" alt="Fone JBL TUNE 510BT">
+                <h3>Fone JBL TUNE 510BT</h3>
+                <p>69,00</p>
+                <button>Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="imagens/FONE_PATINHA_HELLO_BEAR_BK5.jpg" alt="Fone Patinha Hello Bear BK5">
+                <h3>Fone Patinha Hello Bear BK5</h3>
+                <p>69,00</p>
+                <button>Adicionar ao​⬤x
